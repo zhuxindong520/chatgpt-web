@@ -17,7 +17,7 @@ export function defaultSetting(): UserState {
     userInfo: {
       avatar: 'https://im.geekcloud.cf/file/a1458af7daa4b627647ac.png',
       name: 'zhuxindong',
-      description: 'Star on <a href="https://github.com/zhuxindong/chatgpt-bot" class="text-blue-500" target="_blank" >Github</a>',
+      description: 'Star on <a href="https://github.com/zhuxindong/chatgpt-web" class="text-blue-500" target="_blank" >Github</a>',
     },
   }
 }
