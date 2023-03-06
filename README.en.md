@@ -2,7 +2,7 @@
 
 <div style="font-size: 1.5rem;">
   <a href="./README.md">中文</a> |
-  <a href="./README.en.md">English</a> 
+  <a href="./README.en.md">English</a>
 </div>
 </br>
 
@@ -302,10 +302,10 @@ If you find this project helpful and circumstances permit, you can give me a lit
 		<img style="max-width: 100%" src="./docs/wechat.png" alt="WeChat" />
 		<p>WeChat Pay</p>
 	</div>
-	<div style="text-align: center">
+	<!-- <div style="text-align: center">
 		<img style="max-width: 100%" src="./docs/alipay.png" alt="Alipay" />
 		<p>Alipay</p>
-	</div>
+	</div> -->
 </div>
 
 ## License

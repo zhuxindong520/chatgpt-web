@@ -2,7 +2,7 @@
 
 <div style="font-size: 1.5rem;">
   <a href="./README.md">中文</a> |
-  <a href="./README.en.md">English</a> 
+  <a href="./README.en.md">English</a>
 </div>
 </br>
 
@@ -297,10 +297,10 @@ A: 一种可能原因是经过 Nginx 反向代理，开启了 buffer，则 Nginx
 		<img style="max-width: 100%" src="./docs/wechat.png" alt="微信" />
 		<p>WeChat Pay</p>
 	</div>
-	<div style="text-align: center">
+	<!-- <div style="text-align: center">
 		<img style="max-width: 100%" src="./docs/alipay.png" alt="支付宝" />
 		<p>Alipay</p>
-	</div>
+	</div> -->
 </div>
 
 ## License
