@@ -61,7 +61,7 @@
 
 反向代理：
 
-`ChatGPTUnofficialProxyAPI`时可用
+`ChatGPTUnofficialProxyAPI`时可用，[详情](https://github.com/transitive-bullshit/chatgpt-api#reverse-proxy)
 
 ```shell
 # service/.env
