@@ -234,6 +234,9 @@ watch(() => promptList, () => {
   <NMessageProvider>
     <NModal v-model:show="show" style="width: 80%; max-width: 900px;">
       <NCard>
+        <div class="space-y-4" style="text-align: center; font-weight: bold;">
+          <h2><a href="https://s1.locimg.com/2023/03/04/78bbf70e6f36b.gif" class="text-blue-500" target="_blank">👉食用指南</a></h2>
+        </div>
         <div class="space-y-4">
           <NTabs type="segment">
             <NTabPane name="local" tab="本地管理">
