@@ -175,7 +175,18 @@ pnpm dev
 
 ![docker](./docs/docker.png)
 
-#### Docker build & Run
+
+## Docker build & Run(服务器上一键运行)
+
+```bash
+# 一键运行
+docker run --name chatgpt-web -idt --restart always -p 80:3002 --env OPENAI_API_KEY=替换你的APIKEY zhuxindong/chatgpt-web
+
+# 访问地址地址
+http://你的ip:3002/
+```
+
+#### Docker build & Run（本地部署前后端分开运行）
 
 ```bash
 docker build -t chatgpt-web .
@@ -192,14 +203,14 @@ http://localhost:3002/
 
 #### Docker compose
 
-[Hub 地址](https://hub.docker.com/repository/docker/chenzhaoyu94/chatgpt-web/general)
+[Hub 地址](https://hub.docker.com/r/zhuxindong/chatgpt-web)
 
 ```yml
 version: '3'
 
 services:
   app:
-    image: chenzhaoyu94/chatgpt-web # 总是使用 latest ,更新时重新 pull 该 tag 镜像即可
+    image: zhuxindong/chatgpt-web # 总是使用 latest ,更新时重新 pull 该 tag 镜像即可
     ports:
       - 3002:3002
     environment:
