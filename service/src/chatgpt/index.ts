@@ -7,6 +7,15 @@ import fetch from 'node-fetch'
 import { sendResponse } from '../utils'
 import type { ApiModel, ChatContext, ChatGPTUnofficialProxyAPIOptions, ModelConfig } from '../types'
 
+const ErrorCodeMessage: Record<string, string> = {
+  401: '[OpenAI] 提供错误的API密钥 | Incorrect API key provided',
+  403: '[OpenAI] 服务器拒绝访问，请稍后再试 | Server refused to access, please try again later',
+  502: '[OpenAI] 错误的网关 |  Bad Gateway',
+  503: '[OpenAI] 服务器繁忙，请稍后再试 | Server is busy, please try again later',
+  504: '[OpenAI] 网关超时 | Gateway Time-out',
+  500: '[OpenAI] 服务器繁忙，请稍后再试 | Internal Server Error',
+}
+
 dotenv.config()
 
 const timeoutMs: number = !isNaN(+process.env.TIMEOUT_MS) ? +process.env.TIMEOUT_MS : 30 * 1000
@@ -22,11 +31,14 @@ let api: ChatGPTAPI | ChatGPTUnofficialProxyAPI
   // More Info: https://github.com/transitive-bullshit/chatgpt-api
 
   if (process.env.OPENAI_API_KEY) {
+    const OPENAI_API_MODEL = process.env.OPENAI_API_MODEL
+    const model = (typeof OPENAI_API_MODEL === 'string' && OPENAI_API_MODEL.length > 0)
+      ? OPENAI_API_MODEL
+      : 'gpt-3.5-turbo'
+
     const options: ChatGPTAPIOptions = {
       apiKey: process.env.OPENAI_API_KEY,
-      completionParams: {
-        model: 'gpt-3.5-turbo',
-      },
+      completionParams: { model },
       debug: false,
     }
 
@@ -98,8 +110,11 @@ async function chatReplyProcess(
     return sendResponse({ type: 'Success', data: response })
   }
   catch (error: any) {
-    global.console.error(error)
-    return sendResponse({ type: 'Fail', message: error.message })
+    const code = error.statusCode
+    global.console.log(error)
+    if (Reflect.has(ErrorCodeMessage, code))
+      return sendResponse({ type: 'Fail', message: ErrorCodeMessage[code] })
+    return sendResponse({ type: 'Fail', message: error.message ?? 'Please check the back-end console' })
   }
 }
 
